@@ -19,10 +19,10 @@ Overall this version has a lot of Image optimisations and code improvements to b
 
 
 
-##Thanks
+## Thanks
 
 The original Tekken Git can be found here: https://github.com/mspkvp/tk7movespretty
-Thanks to mspkvp for all your great work! I couldn't bare to see all your excellent work go to waste.
+Thanks to mspkvp for all your great work!
 
 ---
 
