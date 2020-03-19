@@ -3,18 +3,30 @@
 <head>
 	<!--
         ==========================
-        =   Mike Pinto           =
+        =   Oringally made by Mike Pinto = 
+        = 	Forked by Mofolo 	 =
+        = 	Under MIT Licence 	 =
         =   mspkvp@github.com    =
         =   ©2017 tk7movespretty =
         ==========================
 	-->
-	<title>Tekken 7 Pretty Movelist</title>
+	<title>Tekken 7 - The Complete Pretty Move list for PS4 / XBox - Updated 2020 </title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="./dist/css/styles.css">
 	<link rel="stylesheet" href="./dist/css/fa/css/font-awesome.min.css">
 	<link rel="shortcut icon" href="./assets/img/favicon.ico" />
+	
+	
+	<link rel="alternate" hreflang="fr" href="/" />
+	<link rel="alternate" hreflang="de" href="/" />
+	<link rel="alternate" hreflang="it" href="/" />
+	<link rel="alternate" hreflang="ar" href="/" />
+	<link rel="alternate" hreflang="ru" href="/" />
+	<link rel="alternate" hreflang="es" href="/" />
+	<link rel="alternate" hreflang="ko" href="/" />
+	
 </head>
 <body onload="importdata()">
 	<div class="header disable-select">
@@ -42,10 +54,10 @@
 		    	<div class="char-menu-open" onclick="toggleCharMenu()">
 		    		<i class="fa fa-exchange" aria-hidden="true"></i>
 		    	</div> 
-				<div id="selected-title" class="move-head">Kazumi Mishima</div>
+				<div id="selected-title" class="move-head">Please Select a Character</div>
 				<div class="opt-buttons">
 					<div class="btn-preferences" onclick="togglePreferences()">Preferences</div>
-					<div class="btn-filter">Filter</div>
+					<!--  <div class="btn-filter">Filter</div> -->
 				</div>
 		    </div>
 		    <div id="movelist_tab" class="inner-table">
@@ -55,7 +67,7 @@
 					        <div class="move-info">
 					            <div class="move-number">80</div>
 					            <div class="move-title">
-					                <div class="move-name">Sample Combo 1</div>
+					                <div class="move-name">Sample</div>
 					                <div class="move-hitamount">5 Hits</div>
 					            </div>
 					            <div class="move-string"><img class="move-arrow" src="./assets/arrow/d.svg"><img class="move-button" src="./assets/button/XBOX/3.svg">
@@ -111,7 +123,7 @@
 		</div>
 	</div>
 	<div class="footer disable-select">
-		<p><a href="https://github.com/mspkvp/tk7movespretty" target="_blank" style="text-decoration:none;color:#ffffff;"><i class="fa fa-github" aria-hidden="true"></i> mspkvp</a> &copy;2017 | Fanmade & based on TEKKEN&trade;7's GUI | All game images are under TEKKEN&trade;7 & &copy;2017 BANDAI NAMCO Entertainment, Inc. copyright protection.</p>
+		<p><a href="https://github.com/mspkvp/tk7movespretty" target="_blank" style="text-decoration:none;color:#ffffff;"><i class="fa fa-github" aria-hidden="true"></i> Originally made by mspkvp</a> 2017 | Forked in 2020 | All game images are under TEKKEN&trade;7 & &copy;2017 BANDAI NAMCO Entertainment, Inc. copyright protection.</p>
 	</div>
 	<div id="preferences" class="preferences-dialog">
 		<div class="pref-title disable-select">
@@ -149,9 +161,7 @@
 		</table>
 		<div class="pref-close disable-select" onclick="togglePreferences()"><i class="fa fa-times" aria-hidden="true"></i></div>
 	</div>
-	<video autoplay loop id="video-background" muted plays-inline>
-  		<source src="./assets/video/background-smoke.mp4" type="video/mp4">
-	</video>
+
 	<script src="./dist/js/lib/d3.min.js"></script>
 	<script src="./dist/js/lib/js.cookie.min.js"></script>
 	<script src="./src/js/scripts.js"></script>

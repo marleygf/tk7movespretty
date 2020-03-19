@@ -43,7 +43,6 @@ function getCookie(){
 
 function setCookie(){
 	Cookies.set('tk7moves',JSON.stringify({
-		selected_char: selected_char,
 		lang: lang,
 		lang_index: lang_index,
 		jap: jap,
@@ -102,18 +101,31 @@ function setLang(val){
 	fetchmovelist(selected_char);
 }
 
+
+
 function selectChar(index){
+	
 	//remove other moves
 	d3.select(".move-table").remove();
 	d3.select(".char-movelist .inner-table").html("<table class=\"move-table\"></table>");
 	//de-select card
-	var id_string = char_data[selected_char].c.split(" ");
-	d3.select("#"+id_string[0]).classed("selected", false);
+	
+	
+	if(typeof selected_char !== 'undefined') {
+		var id_string = char_data[selected_char].c.split(" ");
+		d3.select("#"+id_string[0]).classed("selected", false);
+	}
+	
 	selected_char = index;
+	
+	
 	id_string = char_data[selected_char].c.split(" ");
 	d3.select("#"+id_string[0]).classed("selected", true);
 	d3.select("#selected-title").text(char_data[selected_char].n);
-	setCookie();
+	
+	//setCookie();
+	
+	window.location.hash = id_string[0];
 
 	if(charMenuDialog) toggleCharMenu();
 }
@@ -150,7 +162,7 @@ var importdata = function importdata(){
 
 			d3.json("./assets/data/map_chars.json", function(err, data) {
 				for(var h in data)
-					char_data[data[h].i] = {c: data[h].c, n: data[h].n};
+					char_data[data[h].i] = {c: data[h].c, n: data[h].n, i: data[h].i};
 
 				for(let i=0; i<data.length; i++){
 					var tname = data[i].c_index.split(" ");
@@ -160,10 +172,20 @@ var importdata = function importdata(){
 						.html("<td class=\"char-card\" id=\""+data[i].c.split(" ")[0]+"\"><img src=\"./assets/chars/"+tname.join("").toLowerCase()+"_thumbnail.png\"><p>"+data[i].c+"</p></td>");
 					d3.select("#"+data[i].c.split(" ")[0]).on("click", function(){fetchmovelist(data[i].i)});
 				}
+				
+				if(typeof selected_char === 'undefined')
+				{
+					hashChange();
+					return;
+				}
+				
+				
 				var id_string = char_data[selected_char].c.split(" ");
 				d3.select("#"+id_string[0]).classed("selected", true);
 				d3.select("#selected-title").text(char_data[selected_char].n);
-				fetchmovelist(selected_char);
+				
+				//hashChange();
+				//fetchmovelist(selected_char);
 			});
 		});
 	});
@@ -324,3 +346,20 @@ var fetchmovelist = function fetchmovelist(index) {
 		document.querySelector("#movelist_tab > table ").firstElementChild.scrollIntoView(true);
 	});
 };
+
+
+function hashChange()
+{
+	var h = window.location.hash.slice(1);
+		
+	for(var i in char_data)
+	{		
+		if(char_data[i].c == h)
+		{
+			selectChar(char_data[i].i);
+			fetchmovelist(char_data[i].i);
+		}
+	}
+}
+
+window.onhashchange = hashChange;
